@@ -11,6 +11,14 @@
 <p>تاریخ انتشار :{{ post.publish | jformat:'%d / %m / %Y' }}</p>
 <p>ساعت :{{ post.publish | jformat:'%m:%I' }}</p>
 <p>نویسنده :{{ post.user }}</p>
+
+
+{% for img in post.image.all %}
+    <img src="{{ img.image.url }}" alt=" img.image.title ">
+    <br>
+    
+{% endfor %}
+    
 <br>
 <hr>
 {% if comment %}
