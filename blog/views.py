@@ -105,15 +105,28 @@ def search_post(request):
         form = SearchForm(data=request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.published.filter(
+            results1 = Post.published.filter(
                 Q(title__icontains=query) | Q(description__icontains=query)
             ).annotate(
                 similarity=Greatest(
                     TrigramSimilarity('title', query),
-                    TrigramSimilarity('description', query)
+                    TrigramSimilarity('description', query),
                 )
             ).order_by('-similarity')
+            results2 = Image.objects.filter(
+                Q(title__icontains=query) | Q(description__icontains=query)
+            ).annotate(
+                similarity=Greatest(
+                    TrigramSimilarity('title', query),
+                    TrigramSimilarity('description', query),
+                )
+            ).order_by('-similarity')
+            # ترکیب دو queryset بدون استفاده از | operator
+            results = list(results1) + list(results2)
+            # مرتب سازی بر اساس similarity
+            results = sorted(results, key=lambda x: x.similarity, reverse=True)
             found = bool(results)
+            # اعمال pagination
             paginator = Paginator(results, 3)
             num_page = request.GET.get('page', 1)
             page = paginator.get_page(num_page)

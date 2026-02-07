@@ -16,6 +16,10 @@
 <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
 <br>
 <p>{{ post.description | linebreaks }}</p>
+
+{% if post.image.first %}
+    <img src="{{ post.image.first.image.url }}" alt="post.image.title">
+{% endif %}
 <p>{{ post.publish | jformat:'%d / %m / %Y'}}</p>
 {% endfor %}
 
