@@ -108,3 +108,4 @@ class Image(models.Model):
         ]
         verbose_name = "تصویر"
         verbose_name_plural = "تصاویر"
+        
