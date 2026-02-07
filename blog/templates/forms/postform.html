@@ -1,0 +1,27 @@
+{% extends 'parent/base.html' %}
+
+{% block title %}ایجاد پست{% endblock title %}
+
+{% block content %}
+{% if created %}
+<h1><center>پست ایجاد شد و پس از بررسی مدیران سایت انتشار خواهد
+        شد!</center></h1>
+<br>
+<br>
+<center><h3><a href="{% url 'blog:home_page' %}">بازگشت به صفحه
+            خانه</a></h3></center>
+{% else %}
+<center><h1>ایجاد پست</h1></center>
+<br>
+<h3>برای ایجاد پست فرم های زیر را پر کنید</h3>
+<br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" , value="ثبت پست">
+</form>
+<br>
+<br>
+<h3><a href="{% url 'blog:home_page' %}">بازگشت به صفحه خانه</a></h3>
+{% endif %}
+{% endblock %}

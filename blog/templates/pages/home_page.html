@@ -1,0 +1,25 @@
+{% extends 'parent/base.html' %}
+{% load jformat %}
+{% load blog_tags %}
+{% block title %}صفحه خانه{% endblock %}
+{% block content %}
+{% mpp as pop_post %}
+{% lpd as lpp %}
+<center><h1>خوش آمدید</h1></center>
+<h3>کل پست های منتشر شده: {% total_posts %}</h3>
+<h3>تعداد کل کامنت ها: {% total_comments %}</h3>
+<h3>آخرین پست منتشر شده: {{ lpp | jformat:'%d / %m / %Y' }}</h3>
+<h3>آخرین پست ها: {% latest_posts 2 %}</h3>
+<h3>محبوب ترین پست ها</h3>
+
+{% for pp in pop_post %}
+<a href="{{ pp.get_absolute_url }}">{{pp.title}}</a>
+{% endfor %}
+
+<br>
+<p><a href="admin/">ورود به پنل ادمین</a></p>
+<p><a href="{% url 'blog:post_list' %}">لیست پست ها</a></p>
+<p><a href="{% url 'blog:create-post' %}">ایجاد پست</a></p>
+<p><a href="{% url 'blog:ticket' %}">ثبت تیکت</a></p>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load static %}
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% include 'partials/header.html' %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

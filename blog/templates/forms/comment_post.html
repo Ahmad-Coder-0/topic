@@ -1,0 +1,15 @@
+{% extends 'parent/base.html' %}
+{% block title %}comment-post{% endblock %}
+{% block content %}
+    {% if comment %}
+        <p>کامنت شما ثبت شد!</p>
+        <br>
+        <p><a href="{% url 'blog:post_detail' post.id %}">بازگشت به پست</a></p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="ثبت کامنت">
+        </form>
+    {% endif %}
+{% endblock %}

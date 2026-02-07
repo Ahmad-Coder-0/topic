@@ -1,0 +1,38 @@
+{% extends 'parent/base.html' %}
+{% load jformat %}
+
+{% block title %}
+پست {{ post.title }}
+{% endblock title %}
+
+{% block content %}
+<p>عنوان :{{ post.title }}</p>
+<p>جزئیات :{{ post.description | linebreaks}}</p>
+<p>تاریخ انتشار :{{ post.publish | jformat:'%d / %m / %Y' }}</p>
+<p>ساعت :{{ post.publish | jformat:'%m:%I' }}</p>
+<p>نویسنده :{{ post.user }}</p>
+<br>
+<hr>
+{% if comment %}
+<p>{{ commnet.count }} کامنت ها</p>
+<br>
+{% for cm in comment %}
+<p>نام: {{ cm.name }}</p>
+<p>متن کامنت: {{ cm.message }}</p>
+<hr>
+{% endfor %}
+{% else %}
+<p>کامنتی وجود ندارد</p>
+{% endif %}
+<br>
+<hr>
+<p>ثبت کامنت</p>
+<form method="post" action="{% url 'blog:comment_post' post.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="ثبت کامنت">
+</form>
+<br>
+<a href="{% url 'blog:post_list' %}"><p>بازگشت به پست ها</p></a>
+{% include 'partials/bthp.html' %}
+{% endblock content %}

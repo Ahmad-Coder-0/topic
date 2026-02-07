@@ -1,0 +1,30 @@
+{% extends 'parent/base.html' %}
+{% load jformat %}
+{% block title %}
+جست و جوی پست
+{% endblock title %}
+
+{% block content %}
+
+{% if found %}
+<center><h1>نتایج جست و جو</h1></center>
+<br>
+<br>
+
+{% for post in results %}
+<hr>
+<a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+<br>
+<p>{{ post.description | linebreaks }}</p>
+<p>{{ post.publish | jformat:'%d / %m / %Y'}}</p>
+{% endfor %}
+
+{% else %}
+
+<center><h1>چیزی یافت نشد!</h1></center>
+<br>
+<br>
+{% endif %}
+{% include 'partials/bthp.html' %}
+{% endblock content %}
+{% include 'partials/pagination.html' %}

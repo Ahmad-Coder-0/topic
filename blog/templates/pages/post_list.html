@@ -1,0 +1,14 @@
+{% extends 'parent/base.html' %}
+{% block title %}لیست پست ها{% endblock %}
+{% block content %}
+<h1>لیست پست ها</h1>
+<br>
+{% for post in posts %}
+<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+<p>{{ post.description | linebreaks }}</p>
+<img src="{{ post.image.first.image.url }}" >
+<hr>
+{% endfor %}
+    {% include 'partials/pagination.html' with page=posts %}
+    {% include 'partials/bthp.html' %}
+{% endblock content %}
