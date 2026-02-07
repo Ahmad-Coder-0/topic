@@ -121,12 +121,10 @@ def search_post(request):
                     TrigramSimilarity('description', query),
                 )
             ).order_by('-similarity')
-            # ترکیب دو queryset بدون استفاده از | operator
             results = list(results1) + list(results2)
-            # مرتب سازی بر اساس similarity
+
             results = sorted(results, key=lambda x: x.similarity, reverse=True)
             found = bool(results)
-            # اعمال pagination
             paginator = Paginator(results, 3)
             num_page = request.GET.get('page', 1)
             page = paginator.get_page(num_page)
