@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django_jalali.db import models as jmodels
 from django.urls import reverse
+from django_resized import ResizedImageField
 
 
 class PublishedManager(models.Manager):
@@ -99,7 +100,8 @@ class Image(models.Model):
         max_length=300, verbose_name='عنوان تصویر', null=True, blank=True)
     description = models.TextField(
         verbose_name='جزئیات تصویر', null=True, blank=True)
-    image = models.ImageField(verbose_name="تصویر", upload_to='post_image')
+    image = ResizedImageField(verbose_name="تصویر", upload_to='post_image', size=[
+                              500, 500], quality=75, crop=['middle', 'center'])
 
     class Meta:
         ordering = ('-title', )
@@ -108,4 +110,3 @@ class Image(models.Model):
         ]
         verbose_name = "تصویر"
         verbose_name_plural = "تصاویر"
-        
