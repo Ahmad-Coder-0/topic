@@ -29,6 +29,6 @@
 <br>
 <br>
 {% endif %}
+{% include 'partials/pagination.html' with page=results query=query %}
 {% include 'partials/bthp.html' %}
 {% endblock content %}
-{% include 'partials/pagination.html' %}

@@ -15,6 +15,8 @@
 
 {% for img in post.image.all %}
     <img src="{{ img.image.url }}" alt=" img.image.title ">
+    <p>{{img.title}}</p>
+    <p>{{ img.description }}</p>
     <br>
     
 {% endfor %}
