@@ -15,7 +15,7 @@
 <br>
 <h3>برای ایجاد پست فرم های زیر را پر کنید</h3>
 <br>
-<form method="post">
+<form method="post", enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" , value="ثبت پست">

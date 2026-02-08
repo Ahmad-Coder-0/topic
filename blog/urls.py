@@ -12,4 +12,5 @@ urlpatterns = [
          views.commnet_post, name='comment_post'),
     path('create-post/', views.createpost, name='create-post'),
     path('search-post/', views.search_post, name='search-post'),
+    path('profile/', views.profile, name='profile')
 ]

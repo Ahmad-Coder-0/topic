@@ -1,0 +1,42 @@
+{% extends 'parent/base.html' %}
+{% load jformat %}
+
+
+{% block title %}صفحه پروفایل{% endblock title %}
+
+
+{% block content %}
+    <center><h1>پروفایل شما</h1></center>
+    <br>
+    <br>
+    <h3>نام: {{ user.first_name }}</h3>
+    <h3>نام خانودادگی: {{ user.last_name }}</h3>
+    <h3>نام کاربری: {{ user.username }}</h3>
+
+    <br>
+    <br>
+    <hr>
+    <center><h1>پست های شما</h1></center>
+    <br>
+    
+    {% for post in posts %}
+        <h3>عنوان: {{ post.title }}</h3>
+        <h4>جزئیات: {{ post.description }}</h4>
+        <h4>تاریخ ایجاد: {{ post.created | jformat:'%d / %m / %Y' }}</h4>
+        <h4>تاریخ آپدیت: {{ post.updated | jformat:'%d / %m / %Y' }}</h4>
+        <h4>تاریخ انتشار: {{ post.publish | jformat:'%d / %m / %Y' }}</h4>
+        <h4>زمان مطالعه: {{ post.reading_time }}</h4>
+        {% if post.status == 'PB' %}
+            <h4>وضعیت: منتشر شده</h4>
+        {% elif post.status == 'DF' %}
+            <h4>وضعیت: منتشر نشده</h4>
+        {% else %}
+            <h4>وضعیت: رد شده</h4>
+        {% endif %}
+        <hr>
+    {% endfor %}
+
+    {% include 'partials/bthp.html' %}
+
+
+{% endblock content %}

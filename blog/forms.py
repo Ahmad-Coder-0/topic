@@ -61,9 +61,11 @@ class CommentForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
+    image1 = forms.ImageField(label="تصویر اول", required=False)
+    image2 = forms.ImageField(label="تصویر دوم", required=False)
     class Meta:
         model = Post
-        fields = ['title', 'description', 'user', 'reading_time']
+        fields = ['title', 'description', 'reading_time']
         
 class SearchForm(forms.Form):
     query = forms.CharField()

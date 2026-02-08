@@ -80,10 +80,13 @@ def commnet_post(request, post_id):
 def createpost(request):
     post = None
     created = False
-    form = PostForm(data=request.POST)
+    form = PostForm(request.POST, request.FILES)
     if form.is_valid():
-        post = form.save()
-        # return HttpResponse("<h1><center>پست ایجاد شد و پس از بررسی مدیران سایت انتشار خواهد شد!</center></h1>")
+        post = form.save(commit=False)
+        post.user = request.user
+        post.save()
+        Image.objects.create(image=form.cleaned_data['image1'], post=post)
+        Image.objects.create(image=form.cleaned_data['image2'], post=post)
         created = True
     else:
         form = PostForm()
@@ -126,3 +129,16 @@ def search_post(request):
     }
 
     return render(request, 'pages/searchpost.html', context)
+
+
+def profile(request):
+    user = request.user
+    if not user.is_anonymous:
+        posts = Post.objects.filter(user=user)
+        context = {
+            'posts': posts,
+            'user': user
+        }
+        return render(request, 'pages/profile.html', context)
+    else:
+        return HttpResponse("login first!")
