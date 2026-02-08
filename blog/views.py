@@ -105,22 +105,10 @@ def search_post(request):
         form = SearchForm(data=request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results1 = Post.published.filter(
-                Q(title__icontains=query) | Q(description__icontains=query)
-            ).annotate(
-                similarity=Greatest(
-                    TrigramSimilarity('title', query),
-                    TrigramSimilarity('description', query),
-                )
-            ).order_by('-similarity')
-            results2 = Image.objects.filter(
-                Q(title__icontains=query) | Q(description__icontains=query)
-            ).annotate(
-                similarity=Greatest(
-                    TrigramSimilarity('title', query),
-                    TrigramSimilarity('description', query),
-                )
-            ).order_by('-similarity')
+            results1 = Post.published.annotate(similarity=TrigramSimilarity('title', query)).order_by('-similarity')
+            results2 = Post.published.annotate(similarity=TrigramSimilarity('description', query)).order_by('-similarity')
+            results3 = Post.published.image
+            
             results = list(results1) + list(results2)
 
             results = sorted(results, key=lambda x: x.similarity, reverse=True)
