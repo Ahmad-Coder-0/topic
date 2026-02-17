@@ -1,0 +1,16 @@
+{% extends 'parent/base.html' %}
+
+{% block title %} تایید حذف پست {% endblock %}
+
+{% block content %}
+    <center><h2>آیا از حذف پست مطمئن هستید؟!</h2></center>
+    <br>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="تایید می کنم">
+    </form>
+    <hr>
+    <h3><a href="{% url 'blog:profile' %}">صفحه پروفایل</a></h3>
+    {% include 'partials/bthp.html' %}
+{% endblock content %}

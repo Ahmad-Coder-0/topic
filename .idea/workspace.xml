@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="730156ac-714b-4c15-91a2-29f75237f565" name="Changes" comment="" />
+    <list default="true" id="730156ac-714b-4c15-91a2-29f75237f565" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/blog/templates/pages/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/pages/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/post_image/https2F2Fubuntu.com2Fwp-content2Fuploads2F7ac82Fsafron.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/post_image/https2F2Fubuntu_1wYgWMK.com2Fwp-content2Fuploads2F1ff82FUbuntu_draft-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/post_image/wp2051972-che-guevara-hd-wallpapers.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/post_image/wp2051974-che-guevara-hd-wallpapers_USwb3pW.jpeg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +39,9 @@
       </map>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -49,6 +60,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/ahmadrahimi/projects/python/topic/topic/settings.py",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editor.preferences.completion",
@@ -74,6 +86,7 @@
       <workItem from="1769158495731" duration="1561000" />
       <workItem from="1769191647286" duration="75000" />
       <workItem from="1769445212900" duration="5412000" />
+      <workItem from="1771097602848" duration="150000" />
     </task>
     <servers />
   </component>

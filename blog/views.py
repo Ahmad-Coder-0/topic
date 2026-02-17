@@ -142,3 +142,13 @@ def profile(request):
         return render(request, 'pages/profile.html', context)
     else:
         return HttpResponse("login first!")
+    
+    
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('blog:profile')
+    
+    context = None
+    return render(request, 'pages/confirm_delete.html')
